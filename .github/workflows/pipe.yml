@@ -39,7 +39,7 @@ jobs:
     
     steps:
     - id: report-count
-      uses: alita248/arg-count-action@main
+      uses: alita248/myGhAction@main
       with:
         arguments-to-count: ${{ github.event.inputs.myValues }}       
     - run: echo
