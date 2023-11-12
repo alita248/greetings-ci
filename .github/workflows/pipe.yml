@@ -32,5 +32,33 @@ jobs:
       uses: gradle/gradle-build-action@v2.2.1 # v2.6.0
       with:
         arguments: build
+  
+  test:
     - name: show secret
       run: echo ${{ secrets.GITHUB_TOKEN}}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: get from github
+      uses: actions/checkout@v3
+    
+    - name: list files
+      run: ls -ltr
+
+  count-args:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - id: report-count
+      uses: <your github userid>/arg-count-action@main
+      with:
+        arguments-to-count: ${{ github.event.inputs.myValues }}       
+    - run: echo
+    - shell: bash
+      run: |
+        echo argument count is ${{ steps.report-count.outputs.arg-count }}      
+
+
+
